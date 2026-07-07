@@ -30,13 +30,7 @@
       <div class="col col-center">
         <div class="hero glass-panel">
           <div class="hero__map">
-              <div class="radar-ring"></div>
-              <DataHub :overview="overview" />
-            </div>
-          <div class="hero__stats">
-            <StatChip label="在线设备" :value="middleStats.devices" />
-            <StatChip label="巡检任务" :value="middleStats.tasks" />
-            <StatChip label="拥堵指数" :value="middleStats.congestion" suffix="%" />
+            <DataHub :overview="overview" />
           </div>
         </div>
 
@@ -70,7 +64,7 @@ import { storeToRefs } from 'pinia';
 import { useDashboardStore } from '@/store/dashboardStore';
 import ChartCard from '@/components/layout/ChartCard.vue';
 import KpiCard from '@/components/layout/KpiCard.vue';
-import StatChip from '@/components/layout/StatChip.vue';
+
 import FlowTimeline from '@/components/layout/FlowTimeline.vue';
 import RankingList from '@/components/layout/RankingList.vue';
 import BaseLineChart from '@/components/charts/BaseLineChart.vue';
@@ -86,7 +80,6 @@ const subtitle = '城市运营态势全景看板 / 统一数据驾驶舱';
 const currentTime = ref(dayjs().format('YYYY-MM-DD HH:mm:ss'));
 let timer: number | undefined;
 
-const middleStats = computed(() => (overview.value as any)?.middleStats ?? { devices: 0, tasks: 0, congestion: 0 });
 const kpis = computed(() => (overview.value as any)?.kpis ?? []);
 const ranking = computed(() => (overview.value as any)?.ranking ?? []);
 const timeline = computed(() => (overview.value as any)?.timeline ?? []);
